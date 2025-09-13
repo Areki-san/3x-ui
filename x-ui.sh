@@ -452,7 +452,7 @@ enable_bbr() {
 
     # Check the OS and install necessary packages
     case "${release}" in
-    ubuntu | debian | armbian)
+    ubuntu | debian | armbian | linuxmint)
         apt-get update && apt-get install -yqq --no-install-recommends ca-certificates
         ;;
     centos | rhel | almalinux | rocky | ol)
@@ -486,7 +486,7 @@ enable_bbr() {
 }
 
 update_shell() {
-    wget -O /usr/bin/x-ui -N https://github.com/MHSanaei/3x-ui/raw/main/x-ui.sh
+    wget -O /usr/bin/x-ui -N https://github.com/Areki-san/3x-ui/raw/main/x-ui.sh
     if [[ $? != 0 ]]; then
         echo ""
         LOGE "Failed to download script, Please check whether the machine can connect Github"
@@ -973,7 +973,7 @@ ssl_cert_issue() {
 
     # install socat second
     case "${release}" in
-    ubuntu | debian | armbian)
+    ubuntu | debian | armbian | linuxmint)
         apt-get update && apt-get install socat -y
         ;;
     centos | rhel | almalinux | rocky | ol)
@@ -1408,7 +1408,7 @@ install_iplimit() {
 
         # Check the OS and install necessary packages
         case "${release}" in
-        ubuntu)
+        ubuntu | linuxmint)
             apt-get update
             if [[ "${os_version}" -ge 24 ]]; then
                 apt-get install python3-pip -y
@@ -1501,7 +1501,7 @@ remove_iplimit() {
         rm -rf /etc/fail2ban
         systemctl stop fail2ban
         case "${release}" in
-        ubuntu | debian | armbian)
+        ubuntu | debian | armbian | linuxmint)
             apt-get remove -y fail2ban
             apt-get purge -y fail2ban -y
             apt-get autoremove -y

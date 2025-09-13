@@ -41,7 +41,7 @@ echo "Arch: $(arch)"
 
 install_base() {
     case "${release}" in
-    ubuntu | debian | armbian)
+    ubuntu | debian | armbian | linuxmint)
         apt-get update && apt-get install -y -q wget curl tar tzdata
         ;;
     centos | rhel | almalinux | rocky | ol)
@@ -173,7 +173,7 @@ install_x-ui() {
             exit 1
         fi
     fi
-    wget -O /usr/bin/x-ui-temp https://raw.githubusercontent.com/MHSanaei/3x-ui/main/x-ui.sh
+    wget -O /usr/bin/x-ui-temp https://raw.githubusercontent.com/Areki-san/3x-ui/main/x-ui.sh
 
     # Stop x-ui service and remove old resources
     if [[ -e /usr/local/x-ui/ ]]; then
